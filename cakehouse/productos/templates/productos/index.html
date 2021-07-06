@@ -27,27 +27,31 @@
 
 
 
-        {% if user.is_authenticated %}
-        <table >
-            <thead>
-              <tr>
-                <th >
-        <a class="nav-link" class="text-light" href="{% url 'logout' %}">Cerrar sesión</a>
-        <th >
-            <th >
-    <a class="nav-link" href="# " class="text-light">{{ user.username }}</a>
-    <th >
-
-        {% else %}
-
-        <th >
-       <a href="{%url 'productos:frm_iniciar_sesion'%}" class="text-light">iniciar sesión</a>
-       <th >
-
-        {% endif %}
-        <tr>
-</tbody>
-</table>
+      
+        <table>
+           
+           
+                <tr>
+                    {% if user.is_authenticated %}
+                    <th>
+                        <a class="nav-link" style="color: white;" href="{% url 'logout' %}">Cerrar sesión</a>
+                    <th>
+                        <th>
+                            <a class="nav-link" href="# " style="color: white;">|</a>
+                        <th>
+                    <th>
+                        <a class="nav-link" href="# " style="color: white;">@{{user.username }}</a>
+                    <th>
+                       
+                    {% else %}
+                    <th>
+                        <a class="nav-link" href="{%url 'productos:frm_iniciar_sesion'%}" style="color: white;">iniciar
+                            sesión</a>
+                    <th>
+                    {% endif %}
+                <tr>
+      
+        </table>
     </nav>
 
 
@@ -79,12 +83,17 @@
                     <a class="nav-link" href="#">Contactenos</a>
                 </li>
                 <li class="nav-item active">
+                    {% if user.is_authenticated %}
+                    {% if perms.app.delete_productos%}
+                    {% if perms.app.change_productos%}
+                   
                     <a class="nav-link" href="{%url 'productos:administracion'%}">Administración</a>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">@{{ user.username }}<span class="sr-only">(current)</span></a>
-                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{%url 'productos:mostrar_productos'%}" method="POST">
                 {% csrf_token %}

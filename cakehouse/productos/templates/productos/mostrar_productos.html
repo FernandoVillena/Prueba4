@@ -66,20 +66,25 @@
     </nav>
 
 
-            <p>Estas buscando: <strong>{{query}}</strong> </p>
-      
-            <h2>producto encontrados: {{producto|length}} </h2>
+          
       
     {%if producto%}
+ 
+    
+  
+       
+  
 
 
     <ul>
 
-        <h1 style="text-align: center; color: black;">PRODUCTOS</h1>
+        <h1 style="text-align: center; color: black;">PRODUCTOS ENCONTRADOS </h1>
 
         {%load humanize%}
         <div class="container ">
+            
             <div class="container">
+               
                 {%for p in producto %}
 
                 <div class="card productos shadow p-3 mb-5" style="width: 18rem; ">
