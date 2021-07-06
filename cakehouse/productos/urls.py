@@ -13,7 +13,8 @@ urlpatterns = [
     path('modificar_producto',views.modificar_producto,name='modificar_producto'),
     path('agregar_producto',views.agregar_producto,name='agregar_producto'),
     path('agregar',views.agregar,name='agregar'),
-
+    path('frm_iniciar_sesion',views.frm_iniciar_sesion,name='frm_iniciar_sesion'),
+    path('iniciar_sesion',views.iniciar_sesion,name='iniciar_sesion'),
     
     
 ]

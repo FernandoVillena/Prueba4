@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.base import Model
+from django.utils.translation import ugettext as _
 
 # Create your models here.
 class Tipo_producto(models.Model):
@@ -18,3 +19,9 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+    class Meta: 
+        permissions = (
+            ('gerente', _('Es gerente')),
+            ('cliente', _('Es cliente')),
+
+        ) 

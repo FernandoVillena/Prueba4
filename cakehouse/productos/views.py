@@ -8,6 +8,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth import authenticate, login
 
 
 
@@ -91,3 +92,16 @@ def agregar(request):
 
     producto.save()
     return HttpResponseRedirect(reverse('productos:administracion'))
+
+def frm_iniciar_sesion(request):
+    return render(request,'productos/frm_iniciar_sesion.html')
+
+def iniciar_sesion(request):
+   usuario = request.POST["usuario"]
+   clave = request.POST["clave"]    
+   user = authenticate (request, username = usuario, password = clave)
+   if user is not None:
+       login(request,user)
+       return HttpResponseRedirect(reverse('productos:index'))
+   else:
+       return HttpResponse("Usuario no registrado o no existente")     
