@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{%url 'productos:index'%}">Home </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Acerca de la pastelería</a>
+                    <a class="nav-link" href="">Acerca de la pastelería</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Producto
@@ -51,6 +51,9 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Contactenos</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{%url 'productos:administracion'%}">Administración</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{%url 'productos:mostrar_productos'%}" method="POST">
@@ -109,7 +112,9 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel">
+                           
                             <img src="{% static 'productos/img/nosotros.png'%}" class="d-block w-100" alt="...">
+                         
                         </div>
                     </div>
                 </div>
@@ -146,7 +151,9 @@
 
 
             <div class="card productos shadow p-3 mb-5" style="width: 18rem; ">
+                {%if p.imagen %}
                 <img src="{{p.imagen.url}}" class="card-img-top" alt="...">
+                {%endif%}
                 <div class="card-body">
                     <h5 class="card-title">{{p.nombre}}</h5>
                     <p class="card-text">{{p.descripcion}}</p>
